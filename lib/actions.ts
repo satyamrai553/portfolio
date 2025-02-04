@@ -12,29 +12,32 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 export async function sendEmail(data: ContactFormInputs) {
   const result = ContactFormSchema.safeParse(data)
 
-  if (result.error) {
+  if (!result.success) {
     return { error: result.error.format() }
   }
-
   try {
-    const { name, email, message } = result.data
-    const { data, error } = await resend.emails.send({
-      from: 'hello@hamedbahram.io',
+    const {name, email, message} = result.data;
+    const response = await resend.emails.send({
+      from: 'Satyam <noreply@satyamcodes.online>', // Must be from a verified domain
       to: [email],
-      cc: ['hello@hamedbahram.io'],
+      cc: ['satyamrai553@gmail.com'],
       subject: 'Contact form submission',
-      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
-      react: ContactFormEmail({ name, email, message })
+      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
     })
-
-    if (!data || error) {
-      throw new Error('Failed to send email')
+    
+    if (response.error) {
+      throw new Error(`Failed to send email: ${response.error.message}`)
     }
 
     return { success: true }
+    
   } catch (error) {
-    return { error }
+   console.error("Send Email Error:", error)
+    return { error: error instanceof Error ? error.message : 'Unknown error occurred' }
+    
   }
+
+  
 }
 
 export async function subscribe(data: NewsletterFormInputs) {
