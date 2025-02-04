@@ -1,0 +1,43 @@
+---
+  title: Introduction to Blockchain
+  summary: Blockchain is a revolutionary technology that enables decentralized and secure digital transactions. This post will introduce you to the basics of Blockchain.
+  image: /images/posts/block-chain.webp
+  author: 'Satyam Rai'
+  publishedAt: '2025-02-04'
+---
+
+Blockchain is a revolutionary technology that enables decentralized and secure digital transactions. This post will introduce you to the basics of Blockchain.
+
+## What is Blockchain?
+
+Blockchain is a distributed ledger technology that allows data to be stored across multiple computers in a secure and immutable way. Each block in a blockchain contains a cryptographic hash of the previous block, ensuring data integrity and security.
+
+```
+class Block {
+  constructor(index, timestamp, data, previousHash = '') {
+    this.index = index;
+    this.timestamp = timestamp;
+    this.data = data;
+    this.previousHash = previousHash;
+    this.hash = this.calculateHash();
+  }
+
+  calculateHash() {
+    return SHA256(this.index + this.previousHash + this.timestamp + JSON.stringify(this.data)).toString();
+  }
+}
+```
+
+## Why use Blockchain?
+
+Blockchain provides security, transparency, and decentralization, making it ideal for financial transactions, smart contracts, and decentralized applications. It eliminates the need for intermediaries, reducing costs and increasing efficiency.
+
+
+## How to use Blockchain
+
+To use blockchain, you need to understand its basic principles, such as cryptographic hashing, consensus mechanisms, and smart contracts. Developers can build blockchain applications using frameworks like Ethereum, Hyperledger, and Solana.
+
+
+## Conclusion
+
+Blockchain is a game-changing technology that ensures security, transparency, and efficiency in digital transactions. This post has introduced you to the basics of Blockchain and its applications in various industries.
