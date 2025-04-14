@@ -11,7 +11,7 @@ export default function Intro() {
         <p className='mt-3 font-light text-muted-foreground'>
           I&#39;m a full-stack developer passionate about backend technologies and building scalable applications. I love exploring new tech and solving complex problems.
         </p>
-        <Link href="https://www.fiverr.com/s/qDybrj5">
+        <Link href="/freelancers/satyamr6?mp_source=share">
         <Button 
         type='submit'
         className='w-48 my-6 disabled:opacity-50'>
